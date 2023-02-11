@@ -30,16 +30,38 @@
       
     </style>
   </head>
-  <body>
-    <div class="container d-flex justify-content-center p-4">
-      <div class="row">
-        <div class="col justify-content-center text-center">
-          <h1>Welcome to Tel Hai meeting</h1>
-          <p>meet new people from the college and the north</p>
-          <a class="btn btn-outline-success" href="login.html" style="width: 150px; height: 50px;">let's go</a> </br>
-          <img class="p-2" style="width: 75%; height: 75%;" src="static/east_campus.png" alt="east campus">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center">
+            Sign Up
+          </div>
+          <div class="card-body">
+            <!-- form to input name, email and password -->
+            <form id="signup-form">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" onclick="register()">Sign Up</button>
+            </form>
+            <!-- display error message -->
+            <p id="error-message" class="text-danger mt-3"></p>
+            <p class="text-center mt-3">Already registered? <a href="login.html">Login</a></p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
