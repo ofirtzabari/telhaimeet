@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.17.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.17.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      body{
+        background-color:#64a83abe ;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+              Login
+            </div>
+            <div class="card-body">
+              <form id="login-form">
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button id="login" type="submit" class="btn btn-primary btn-block ">Login</button>
+              </form>
+              <!-- display error message -->
+              <p id="error-message" class="text-danger mt-3"></p>
+              <p class="text-center mt-3">Not registered yet? <a href="signup.html">Sign Up</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script type="module">
+      import { initializeApp } from "firebase/app";
+      import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBpnxrWY7cxJ3jAPceUju5C5lcxiDpot6I",
+        authDomain: "meetelhai.firebaseapp.com",
+        databaseURL: "https://meetelhai-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "meetelhai",
+        storageBucket: "meetelhai.appspot.com",
+        messagingSenderId: "690174653337",
+        appId: "1:690174653337:web:32a0f3f9db0a6c33235908"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      login.addEventLisitener('click', (e) =>{
+
+      })
+
+    </script>  
+  </body>
+</html>
