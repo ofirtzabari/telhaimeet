@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <script defer src="/__/firebase/9.17.1/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.17.1/firebase-performance-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <script type="module" src="signup.js"></script>  -->
+    <style>
+      body{
+        background-color:#64a83abe ;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h2>Bootstrap Form Example</h2>
+        <form>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter first name" />
+          </div>
+          <div class="form-group">
+            <label for="birthDate">Birth Date:</label>
+            <input type="date" class="form-control" id="birthDate" />
+          </div>
+          <div class="form-group">
+            <label for="gender">What am I?</label>
+            <select class="form-control" id="gender">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="searchGender">What I am searching for?</label>
+            <select class="form-control" id="searchGender">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Both</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js'
+        import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpnxrWY7cxJ3jAPceUju5C5lcxiDpot6I",
+            authDomain: "meetelhai.firebaseapp.com",
+            databaseURL: "https://meetelhai-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "meetelhai",
+            storageBucket: "meetelhai.appspot.com",
+            messagingSenderId: "690174653337",
+            appId: "1:690174653337:web:7fad7656f5466c1e235908"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+
+        const db = getFirestore(app);
+
+        var userData = JSON.parse(sessionStorage.getItem('userData'));
+        const cityRef = doc(db, 'Who-I-Am', userData.uid);
+        setDoc(cityRef, {fist_name: "ofir", birth : 14/12/1997, i_am : "male", serch : "famale"});
+        
+    </script>
+</body>
+</html>
