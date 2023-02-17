@@ -63,6 +63,7 @@
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js'
         import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+        import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js'
 
         const firebaseConfig = {
             apiKey: "AIzaSyBpnxrWY7cxJ3jAPceUju5C5lcxiDpot6I",
@@ -75,21 +76,28 @@
         };
     
         const app = initializeApp(firebaseConfig);
-
+        const auth = getAuth();
         const db = getFirestore(app);
 
-        var userData = JSON.parse(sessionStorage.getItem('userData'));
-        $("#submit").click( ()=>{
-
-            var first_Name = $("#firstName").val();
-            var birth_Date = $("#birthDate").val();
-            var gender_ = $("#gender").val();
-            var search_Gender = $("#searchGender").val();
-
-            const cityRef = doc(db, 'Who-I-Am', userData.uid);
-            setDoc(cityRef, {fist_name: first_Name, birth : birth_Date, gender : gender_, serch : search_Gender});
-            window.location.href="./main.html";
-        })
+        $(document).ready(()=>{
+          $("#submit").click(()=>{
+            onAuthStateChanged(auth, (user) => {
+              if (user) {
+                var name = $("#firstName").val();
+                var birthDate = $("#birthDate").val();
+                var gender_ = $("#gender").val();
+                var searchGender = $("#searchGender").val();
+                const myData = doc(db, 'Who-I-Am', user.email);
+                setDoc(myData, {fist_name: name, birth : birthDate, gender : gender_, serch : searchGender});
+                window.location.href="./main.html";
+              } 
+              else {
+                alert("you are log out, please log in");
+                window.location.href="./login.html";
+              }
+            });
+          });
+        });
         
         
     </script>

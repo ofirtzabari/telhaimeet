@@ -89,14 +89,12 @@
 
           signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            alert("successful");
             // Signed in 
             const user = userCredential.user;
             if (user) {
               var userData = {
                 uid: user.uid
               }}
-            sessionStorage.setItem('userData', JSON.stringify(userData));
             // ...
             window.location.href="./main.html";
           })
