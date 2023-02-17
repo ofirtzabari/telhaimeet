@@ -94,7 +94,6 @@
                 console.log(user.email);
                 const myData = doc(db, 'Who-I-Am', user.email);
                 await setDoc(myData, {first_name: name, birth : birthDate, gender : gender_, search : searchGender});
-                alert(name+ " " + birthDate + " " + gender_ + " " + searchGender)
                 window.location.href="./main.html";
               } 
               else {
