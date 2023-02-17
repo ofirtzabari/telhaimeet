@@ -74,21 +74,26 @@
             messagingSenderId: "690174653337",
             appId: "1:690174653337:web:7fad7656f5466c1e235908"
         };
-    
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-        const db = getFirestore(app);
 
         $(document).ready(()=>{
+          const app = initializeApp(firebaseConfig);
+          const auth = getAuth();
+          const db = getFirestore(app);
+
           $("#submit").click(()=>{
-            onAuthStateChanged(auth, (user) => {
+            onAuthStateChanged(auth, async(user) => {
               if (user) {
                 var name = $("#firstName").val();
                 var birthDate = $("#birthDate").val();
                 var gender_ = $("#gender").val();
                 var searchGender = $("#searchGender").val();
+                if(name == "" || birthDate == "" || gender_ == "" || searchGender == ""){
+                  alert("please fill all");
+                  return;
+                }
+                console.log(user.email);
                 const myData = doc(db, 'Who-I-Am', user.email);
-                setDoc(myData, {first_name: name, birth : birthDate, gender : gender_, search : searchGender});
+                await setDoc(myData, {first_name: name, birth : birthDate, gender : gender_, search : searchGender});
                 alert(name+ " " + birthDate + " " + gender_ + " " + searchGender)
                 window.location.href="./main.html";
               } 
